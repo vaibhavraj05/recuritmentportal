@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  node:
+    image: testr:2
+    container_name: recuritmentportal
+    depends_on:
+      - redis
+      - postgres
+    env_file:
+      - .env
+    ports:
+      - 4435:4435
+    
+  redis:
+    image: redis
+    container_name: recuritment-redis
+    depends_on:
+      - postgres
+  
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=123456
+    volumes:
+       - ./data:/var/lib/postgresql/data
+    
+
+    
