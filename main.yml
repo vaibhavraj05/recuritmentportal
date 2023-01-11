@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+  - name: Updating the current compose file
+    replace:
+      path: ./docker-compose.yml
+      regexp: 'vaibhavrajnathchauhan\/recuritmentportal:*(.+)$'
+      replace: "vaibhavrajnathchauhan/recuritmentportal:{{ BUILD_ID }}"
+
+  # docker compose up
+  - name: Running the container
+    docker_compose:
+      project_src: ./
+      build: false
+      restarted: true
