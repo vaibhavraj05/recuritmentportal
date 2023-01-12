@@ -6,7 +6,7 @@
   tasks:
   - name: Updating the current compose file
     replace:
-      path: docker-compose.yml
+      path: Docker-compose.yml
       regexp: 'vaibhavrajnathchauhan\/recuritmentportal:*(.+)$'
       replace: "vaibhavrajnathchauhan/recuritmentportal:{{ BUILD_ID }}"
 
