@@ -6,13 +6,13 @@
   tasks:
   - name: Updating the current compose file
     replace:
-      path: ~/raghav/Docker-compose.yml
+      path: /home/ec2-user/raghav/docker-compose.yml
       regexp: 'vaibhavrajnathchauhan\/recuritmentportal:*(.+)$'
       replace: "vaibhavrajnathchauhan/recuritmentportal:{{ BUILD_ID }}"
 
   # docker compose up
   - name: Running the container
     docker_compose:
-      project_src: ~/raghav
+      project_src: /home/ec2-user/raghav
       build: false
       restarted: true
